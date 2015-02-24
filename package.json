@@ -1,0 +1,30 @@
+{
+  "name": "WesKaplan",
+  "version": "0.0.1",
+  "private": true,
+  "description": "The personal site of Wes Kaplan",
+  "main": "app.js",
+  "scripts": {
+    "sass-watch": "sass --watch public/styles/site.scss:public/styles/site.css",
+    "sass": "sass public/styles/site.scss public/styles/site.css",
+    "start": "node app.js"
+  },
+  "author": "Wes Kaplan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.11.1",
+    "jade": "^1.9.1",
+    "nodemailer": "^1.3.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "bower": "^1.3.12",
+    "gulp-sass": "^1.3.2",
+    "gulp-livereload": "^3.5.0",
+    "gulp-nodemon": "^1.0.5",
+    "gulp-plumber": "^0.6.6",
+    "gulp-ruby-sass": "^1.0.0-alpha.2",
+    "gulp.spritesmith": "^2.4.0",
+    "gulp-concat": "^2.4.3"
+  }
+}

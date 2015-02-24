@@ -1,0 +1,461 @@
+#header {
+	.intro {
+		background-color: $yellow;
+		padding: 20px;
+		h1, h2 {
+			margin: 10px;
+			text-align: center;
+			font-weight: normal;
+		}
+		h1{
+			font-size: 5em;
+		}
+		h2 {
+			font-family: $cursive;
+			font-style: italic;
+			font-size: 1.5em;
+		}
+		.myName{
+			font-style: normal;
+			font-family: $bold-sans;
+			font-variant: small-caps;
+		}
+		.whoIAm{
+			position: relative;
+			height: 150px;
+			>span {
+				position: absolute;
+				top: 0;
+				left:0;
+				right:0
+			}
+			.hidden{
+				display: none;
+			}
+			.designer{
+				}
+			.typewriter {
+				font-family: $mono;
+				padding: 20px 0;
+			}
+			.cursor {
+				@include animation(blink 1s linear infinite)
+			}
+		}
+	}
+	.main-logo {
+		@include perspective(200px);
+		@include perspective-origin(50% 56%);
+		@include linear-gradient(to bottom, $yellow 55%, #fff 58%);
+		.logo-reflective{
+			@include transition(transform 0.75s);
+			margin: 0 auto;
+			&:hover{
+				@include transform(rotateY(360deg));
+			}
+		}
+	}
+	.navigation {
+		ul {
+			padding:20px 0 50px 0;
+			@include outer-container;
+
+			li {
+				@include perspective(1000px);
+				@include perspective-origin(50% 50%);
+				@include span-columns(4);
+				text-align: center;
+				font-family: $cursive;
+				font-style: italic;
+				font-size: 3em;
+				&.about-nav a{
+					&:hover:before, &:after {
+						background-color: $red;
+					}
+					&:before, &:hover:after {
+						background-color: darken($red, 10%);
+					}
+				}
+				&.work-nav a{
+					&:hover:before, &:after {
+						background-color: $blue;
+					}
+					&:before, &:hover:after {
+						background-color: darken($blue, 10%);
+					}
+				}
+				&.contact-nav a{
+					&:hover:before, &:after {
+						background-color: $green;
+					}
+					&:before, &:hover:after {
+						background-color: darken($green, 10%);
+					}
+				}
+				a{	
+					position: relative;
+					padding: 10px;
+					@include transition(color $menu-animation-timing);
+					&:before {
+						content: "";
+						z-index:-1;
+						position: absolute;
+						left: 0;
+						right: 0;
+						top:0;
+						bottom: 0;
+						@include transition(transform $menu-animation-timing, background-color $menu-animation-timing);
+						@include transform(rotateX(90deg));
+						@include transform-origin(50% 100%);
+					}
+					&:after {
+						content: "";
+						position: absolute;
+						top:100%;
+						height: 10px;
+						left: 0;
+						right: 0;
+						background-color: black;
+						@include transition(transform $menu-animation-timing, background-color $menu-animation-timing);
+						@include transform(rotateX(0deg));
+						@include transform-origin(50% 0);
+
+					}
+					&:hover {
+						color: #fff;
+						&:before {
+							@include transform(rotateX(0deg));
+						}
+						&:after {
+							@include transform(rotateX(-90deg));
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#thatsMe {
+	height: 400px;
+	overflow: hidden;
+	@include border-top-triangles($triangle-size, $white);
+	@include border-bottom-triangles($triangle-size, $red);
+	.thatsMe{
+		bottom:0;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+		height: auto;
+		width: 100%;
+		min-width: 1250px;
+	}
+}
+
+#about {
+	color: $white;
+	background-color: $red;
+	.content {
+		padding: 30px;
+		@include outer-container;
+		.title {
+			@include span-columns(12);
+			p {
+				@include span-columns(8);
+				@include shift(2);
+			}
+		}
+		ul.chapters{
+			@include span-columns(12);
+			li {
+				@include span-columns(4);
+				display: block;
+				text-align: center;
+				@include perspective(500px);
+				.icon{
+					position: relative;
+					margin: 50px auto;
+					width: 150px;
+					height: 150px;
+					@include transition(transform 0.5s);
+					&:before {
+						content: "";
+						position: absolute;
+						top:0;
+						left: 0;
+						right:0;
+						height: 100%;
+						width: 100%;
+						background: $purple;
+						@include transition(transform 0.5s);
+						@include transform(rotate(45deg));
+						@include backface-visibility(hidden);
+					}
+					&:after {
+						content: "";
+						z-index: -1;
+						position: absolute;
+						top:0;
+						left: 0;
+						right: 0;
+						height: 100%;
+						width: 100%;
+						@include transition(transform 0.5s);
+						@include backface-visibility(hidden);
+						background-position: center center;
+						@include transform(rotateX(-180deg) rotateZ(45deg));
+					}
+					i {
+						position: relative;
+						top: 50%;
+						@include transform(translateY(-50%));
+						width: 100%;
+						font-size: 4em;
+						color: $white;
+						z-index: 1;
+					}
+				}
+				&:hover {
+					.icon{
+						@include transform(rotateY(180deg));
+						&:before{
+							@include transform(rotateX(180deg) rotateZ(45deg));
+							z-index:-1;
+						}
+						&:after {
+							@include transform(rotateX(0) rotateZ(45deg));
+							z-index: 0;
+						}
+					}
+				}
+				&.discovery .icon:after {
+					background-image: url(http://www.news.wisc.edu/news/images/Nebula_RCW49_04.jpg);
+				}
+				&.development .icon:after {
+					background-image: url(http://blogs.adobe.com/typblography/files/2012/09/SourceCodeSplash.png);
+				}
+				&.design .icon:after {
+					background-image: url(http://vector.me/files/images/2/3/231739/colored_abstract_vector_art.jpg);
+				}
+
+				h3 {
+					font-size: 2em;
+					font-variant: small-caps;
+					position: relative;
+					padding: 0;
+					margin: 0;
+					&:after {
+						content: "";
+						display: block;
+						margin: 20px auto;
+						height: 10px;
+						width: 12.5%;
+						background-color: $purple;
+					}	
+				}
+				p {
+					@include span-columns(10);
+					@include shift(1);
+					margin-top: 0;
+					font-family: $cursive;
+					font-style: italic;
+					font-size: 1.25em;
+				}
+			}
+		}
+	}
+}
+
+#work {
+	ul#works {
+		@include outer-container;
+		li.work {
+			display:block;
+			@include span-columns(4);
+			@include perspective(500px);
+			&>a {
+				display: block;
+				position: relative;
+				width:100%;
+				padding-top: 75%;
+				overflow: hidden;
+				.name, .description, .more {
+					width: 100%;
+					position: absolute;
+					margin: auto;
+					text-align: center;
+					@include transition(transform 0.5s);
+				}
+				.name {
+					top: 0;
+					bottom: 0;
+					padding: 20px;
+					@include transform(translate3d(0,25%,0));
+				}
+				.description{
+					height: 25%;
+					right:0;
+					top:0;
+					bottom:0;
+					font-family: $cursive;
+					font-style: italic;
+					font-size: 1.5em;
+					@include transform(translate3d(0,300%,0));
+				}
+				.more {
+					font-family: $bold-sans;
+					bottom: 0;
+					padding: 20px;
+					font-weight: bold;
+					font-size: 1.5em;
+					@include transform(translate3d(0,100%,0));
+					font-variant: small-caps;
+				}
+				&:hover {
+					.name {
+						@include transform(translate3d(0,0,0));
+					}
+					.description {
+						@include transform(translate3d(0,45%,0));
+					}
+					.more {
+						@include transform(translate3d(0,0,0));
+					}
+				}
+			}
+			.jump {
+				background-color: $blue;
+				color: #fff;
+				.name {
+					font-family: $jump;
+					font-size: 3em;
+					letter-spacing: 10px;
+				}
+				.more {
+					background-color: lighten($blue, 10%);
+				}
+			}
+			.wk {
+				background-color: $yellow;
+				.name .logo{
+					margin: 0 auto;
+				}
+				.more {
+					background-color: lighten($yellow, 10%);
+				}
+			}
+			.kaplan {
+				background-color: $red;
+				color: #fff;
+				.name {
+					font-family: $kaplan;
+					font-variant: small-caps;
+					font-size: 2em;
+				}
+				.more {
+					background-color: lighten($red, 10%);
+				}
+			}
+		}
+	}
+	#detail {
+		margin: 50px auto;
+		@include outer-container;
+		.preview {
+			@include span-columns(8);
+			position: relative;
+			&:before {
+				content:"";
+				display: block;
+				padding-top: 68%;
+				width: 100%;
+				background-image: url(../images/Computer.png);
+				background-size: cover;
+			}
+			.screen {
+				position: absolute;
+				border-radius: 10px;
+				left: 10%;
+				right: 10%;
+				top: 5.2%;
+				bottom: 32.6%;
+				background-color: $white;
+				border: 3px solid $white;
+				overflow:hidden;
+				ul {
+					@include transition(transform .5s);
+					margin: 0;
+					width: 300%;
+					height: 100%;
+					li {
+						position: relative;
+						float: left;
+						width:33.33%;
+						img {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+		.list {
+			@include span-columns(4);
+			position: relative;
+			overflow: hidden;
+			&:before {
+				content:"";
+				display: block;
+				padding-top: 136%;
+				width: 100%;
+			}
+			&>ul {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				margin: 0;
+				width: 300%;
+				@include transition(transform .5s);
+				&>li {
+					float: left;
+					width: 33.33%;
+				}
+			}
+			h4.site-name {
+				font-family: $bold-sans;
+				font-variant: small-caps;
+				font-size: 2em;
+				margin: 10px 0;
+			}
+			.site-description{
+			 	p, ul {
+				font-family: $cursive;
+				font-style: italic;
+				font-size: 1.2em
+				}
+				a {
+					text-decoration: underline;
+				}
+				ul {
+					padding-left: 20px;
+					li{
+						list-style: square;
+					}
+				}
+			}
+		}
+	}
+}
+
+#contact {
+	background-color: $green;
+	color: white;	
+	.content {
+	@include outer-container;
+		form {
+			input, textarea {
+				background-color: $green;
+			}
+		}
+	}
+}

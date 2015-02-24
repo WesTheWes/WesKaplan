@@ -1,0 +1,44 @@
+doctype html
+html
+
+	//- HTML HEADER
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0")
+		meta(name="description" content="Wes Kaplan makes things on the internet!")
+		meta(name="robots" content="index, nofollow")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+		title= title || 'Wes Kaplan: Web Designer & Developer'
+		link(rel="shortcut icon", href="/images/favicon.ico", type="image/x-icon")
+
+		link(href="/styles/site.css", rel="stylesheet")
+
+		//- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+
+		//-[if lt IE 9]
+			script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+			script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+		//-[endif]
+
+		//- Include template-specific stylesheets by extending the css block
+		block css
+
+		//- Add any other template-specific HEAD tags by extending the head block
+		block head
+
+	body
+		block content
+
+
+		//- JAVASCRIPT
+
+		//- Here are my global JS files
+		script(src='/js/main.js')
+		if environment = "development"
+			script(src='http://localhost:1234/livereload.js')
+
+		//- Google Analytics JS here.
+
+		//- Include template-specific javascript files by extending the js block
+		block js

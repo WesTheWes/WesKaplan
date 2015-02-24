@@ -1,0 +1,40 @@
+@mixin border-top-triangles($size, $color){
+	& {
+		position: relative;
+		overflow: hidden;
+		padding-top: $size;
+	}
+	&:before {
+		top: 0px;
+		background-position: left top;
+		@include background(linear-gradient(-135deg, $color $size /2, transparent 0),
+							linear-gradient(135deg, $color $size /2, transparent 0));
+		@include serrated-border-helper($size, $color);
+	}
+}
+
+@mixin border-bottom-triangles($size, $color){
+	& {
+		position: relative;
+		overflow: hidden;
+		padding-bottom: $size;
+	}
+	&:after {
+		bottom: 0px;
+		background-position: left top;
+		@include background(linear-gradient(-45deg, $color $size /2, transparent 0),
+							linear-gradient(45deg, $color $size /2, transparent 0));
+		@include serrated-border-helper($size, $color);
+	}
+}
+
+@mixin serrated-border-helper($size, $color) {
+	content: " ";
+	display: block;
+	position: absolute;
+	left: 0;
+	right:0;
+	height: $size;
+	background-repeat: repeat-x;
+	background-size: $size $size;
+}

@@ -1,0 +1,33 @@
+html{
+	font-size: 18px;
+}
+
+ul{
+	padding-left: 0;
+	li {
+		list-style: none;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.content {
+	@include outer-container;
+	padding: 40px 0;
+}
+
+.title {
+	text-align: center;
+	h2{
+		font-size: 3em;
+		margin: 0;
+	}
+	p {
+		font-family: $cursive;
+		font-style: italic;
+		font-size: 1.5em;
+	}
+}

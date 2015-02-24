@@ -1,0 +1,114 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$Computer-name: 'Computer';
+$Computer-x: 0px;
+$Computer-y: 0px;
+$Computer-offset-x: 0px;
+$Computer-offset-y: 0px;
+$Computer-width: 586px;
+$Computer-height: 404px;
+$Computer-total-width: 1066px;
+$Computer-total-height: 657px;
+$Computer-image: '../../images/sprites/sprite.png';
+$Computer: 0px 0px 0px 0px 586px 404px 1066px 657px '../../images/sprites/sprite.png' 'Computer';
+$jump-screen-sky-name: 'jump-screen-sky';
+$jump-screen-sky-x: 586px;
+$jump-screen-sky-y: 0px;
+$jump-screen-sky-offset-x: -586px;
+$jump-screen-sky-offset-y: 0px;
+$jump-screen-sky-width: 480px;
+$jump-screen-sky-height: 320px;
+$jump-screen-sky-total-width: 1066px;
+$jump-screen-sky-total-height: 657px;
+$jump-screen-sky-image: '../../images/sprites/sprite.png';
+$jump-screen-sky: 586px 0px -586px 0px 480px 320px 1066px 657px '../../images/sprites/sprite.png' 'jump-screen-sky';
+$logo-reflective-name: 'logo-reflective';
+$logo-reflective-x: 0px;
+$logo-reflective-y: 404px;
+$logo-reflective-offset-x: 0px;
+$logo-reflective-offset-y: -404px;
+$logo-reflective-width: 160px;
+$logo-reflective-height: 253px;
+$logo-reflective-total-width: 1066px;
+$logo-reflective-total-height: 657px;
+$logo-reflective-image: '../../images/sprites/sprite.png';
+$logo-reflective: 0px 404px 0px -404px 160px 253px 1066px 657px '../../images/sprites/sprite.png' 'logo-reflective';
+$logo-name: 'logo';
+$logo-x: 160px;
+$logo-y: 404px;
+$logo-offset-x: -160px;
+$logo-offset-y: -404px;
+$logo-width: 100px;
+$logo-height: 100px;
+$logo-total-width: 1066px;
+$logo-total-height: 657px;
+$logo-image: '../../images/sprites/sprite.png';
+$logo: 160px 404px -160px -404px 100px 100px 1066px 657px '../../images/sprites/sprite.png' 'logo';
+$spritesheet-width: 1066px;
+$spritesheet-height: 657px;
+$spritesheet-image: '../../images/sprites/sprite.png';
+$spritesheet-sprites: $Computer $jump-screen-sky $logo-reflective $logo;
+$spritesheet: 1066px 657px '../../images/sprites/sprite.png' $spritesheet-sprites;
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,0 +1,73 @@
+#work
+	.content
+		.title
+			h2 Work
+			p This is what Wes has made.
+	ul#works
+		li.work
+			a.jump(href="#works")
+				h2.name Jump
+				p.description A site for jumpers...
+				p.more
+					span Check it!
+		li.work
+			a.wk(href="#works")
+				.name
+					.logo
+				p.description I'm talkin 'bout this site.
+				p.more
+					span Details!
+		li.work
+			a.kaplan(href="#works")
+				h2.name Kaplan Consulting
+				p.description Consultant site for my good ole Dad.
+				p.more
+					span Find out more!
+	#detail
+		.preview
+			.screen
+				ul
+					li#jump-preview
+						a(href="http://www.westhewes.com" target="_blank")
+							img(src="images/jump-screenshot.png")
+					li#wk-preview
+						a(href="#")
+							img(src="images/wk-screenshot.png")
+					li#kaplan-preview
+						a(href="http://www.kaplanlegal.net" target="_blank")
+							img(src="images/kaplan-screenshot.png")
+		.list
+			ul
+				li.jump-list
+					h4.site-name Jump!
+					.site-description
+						p Wes built this site to express his love of jumping. Users upload photos of themselves jumping.
+						p Wes had played with HTML, CSS, and Javascript, but he had to learn a lot more for this site, including:
+						ul
+							li Foundation
+							li Node.js & Express.js
+							li Sass
+							li AWS S3
+							li HTML Canvas
+						p Wes’ confidence grew and he moved on to his next project.
+				li.wk-list
+					h4.site-name WesKaplan.com
+					.site-description
+						p This is the home page of Wes. You're on it right now! What do you think?
+						p This site takes full advantage of Wes' knowledge of CSS and and javascript animations, and a few other things:
+						ul
+							li Node.js & Express.js
+							li Sass with Bourbon & Neat
+							li AJAX forms
+							li Sending backend emails
+						p Now #[a(href="#contact") hire me]!
+				li.kaplan-list
+					h4.site-name Kaplan Legal Consulting
+					.site-description
+						p The homepage for Kaplan Legal Consulting
+						p This site was fairly simple, which allowed Wes to concentrate on honing his design skills. He also learned a node.js CMS, and tried out a different frontend framework.
+						ul
+							li Keystone.js
+							li Bootstrap
+							li SEO Optimisation
+						p P.S. If you like this site, Wes is #[a(href="#contact") accepting clients]!
