@@ -2,10 +2,23 @@
 	.content
 		.title
 			h2 Contact
-			p Wes loves to meet new people and take on new exciting projects. Send him a message below! Go out for drinks with him and talk about life. Or keep it strictly web development. It’s all good.
+			p Share your thoughts with Wes. You can say anything...speak your mind!
 		form(action="/message" method="post")
-			input(type="text" name="name")
-			input(type="text" name="email")
-			input(type="textarea" name="message")
-			input(type="submit")
-			#testing
+			.form-info
+				.form-name
+					input.name.input(type="text" name="name" id="name")
+					label.name.label(for="name")
+						span.label-content Name
+				.form-email
+					input.email.input(type="text" name="email")
+					labal.email.label(for="email")
+						span.label-content Email
+			.form-message
+				textarea.message.input(type="textarea" maxlength="300" name="message")
+				label.label(for="message")
+					span.label-content Message
+				.form-submit
+					input.submit(type="submit" value="Send")
+					.fa.fa-send
+		.email
+			p Or, if you prefer good old fashioned email, you can send him a message at #[a(href="mailto:me@weskaplan.com?subject=Let's%20talk") me@weskaplan.com].

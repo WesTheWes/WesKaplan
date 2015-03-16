@@ -20,6 +20,11 @@ a {
 }
 
 .title {
+	@include span-columns(12);
+	p {
+		@include span-columns(8);
+		@include shift(2);
+	}
 	text-align: center;
 	h2{
 		font-size: 3em;

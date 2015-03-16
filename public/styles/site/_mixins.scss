@@ -38,3 +38,15 @@
 	background-repeat: repeat-x;
 	background-size: $size $size;
 }
+
+@function makeGlow($color, $size) {
+	$val: 0px 0px $size $color;
+	@for $i from 2 through 10 {
+		$val: #{$val}, 0 0 $i * $size #{$color};
+	}
+	@return $val;
+}
+
+@mixin glow($color, $size) {
+	text-shadow: makeGlow($color, $size);
+}

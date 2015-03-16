@@ -7,8 +7,8 @@ var env = process.env.NODE_ENV || 'development';
 var transporter = require('nodemailer').createTransport({
 	service : 'Gmail',
 	auth: {
-		user: process.env.mailUser,
-		pass: process.env.mailPass
+		user: process.env.MAIL_USER,
+		pass: process.env.MAIL_PASS
 	}
 });
 
@@ -31,7 +31,23 @@ router.post('/message/', bodyParser.urlencoded({extended:false}), function(req,r
 		}
 	}
 	console.log(data);
-	res.end(data);
+	var message = req.body.message;
+	var from = req.body.name;
+	var email = req.body.email;
+	var mailOptions = {
+		from: process.env.MAIL_USER,
+		to: process.env.MAIL_USER,
+		subject: 'Message from sent from WesKaplan.com!',
+		text: message + from + email
+	}
+	transporter.sendMail(mailOptions, function(err, info) {
+		if(err) {
+			res.render('formMessage', {success:false, name:from, email:email, message:message});
+		} else {
+			res.render('formMessage', {success:true, name:from, email:email, message:message});	
+		}
+	})
+	
 })
 
 module.exports = router;

@@ -1,0 +1,8 @@
+.confirmation
+	if success
+		h3 Message Sent!
+		p.name-confirm Name: #[span.data=name]
+		p.email-confirm Email: #[span.data=email]
+		p.message-confirm Message: #[span.data=message]
+	else
+		h3 Message did not send... :( Please try again later!
